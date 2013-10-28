@@ -505,6 +505,7 @@ static inline size_t audio_stream_frame_size(const struct audio_stream *s)
 {
     size_t chan_samp_sz;
 #ifdef QCOM_HARDWARE
+    audio_format_t format = s->get_format(s);
     uint32_t chan_mask = s->get_channels(s);
     if(audio_is_output_channel(chan_mask)) {
         if (audio_is_linear_pcm(format) &&
